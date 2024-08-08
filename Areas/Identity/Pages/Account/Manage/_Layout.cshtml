@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-3">
+        <div class="card p-3">
+            <partial name="_ManageNav" />
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <div class="card p-3">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@RenderSection("Scripts", required: false)

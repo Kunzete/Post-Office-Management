@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Post_Office_Management.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employee List";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+<div class="container my-3 mx-auto">
+    <div class="d-flex justify-content-between">
+        <h1>Employee List</h1>
+
+        <p>
+            <a asp-action="Create" class="btn btn-primary">Create New</a>
+        </p>
+    </div>
+
+    <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Login ID
+                </th>
+                <th>
+                    Username
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    Created At
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LoginIdentity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @item.CreatedAt.Value.ToShortDateString()
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.EmployeeID" class="btn btn-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.EmployeeID" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

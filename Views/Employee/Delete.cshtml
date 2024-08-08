@@ -1,0 +1,65 @@
+﻿@model Post_Office_Management.Models.Employee
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-3 py-2">
+                <div class="card-header">
+                    <h3>Delete Employee</h3>
+                </div>
+                <br />
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.LoginIdentity)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.LoginIdentity)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Email)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.PhoneNumber)
+                        </dd>
+                        <dt class="col-sm-4">
+                            @Html.DisplayNameFor(model => model.Address)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Address)
+                        </dd>
+                    </dl>
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="EmployeeID" />
+                        <input type="hidden" asp-for="Email" />
+                        <div class="row offset-4">
+                            <div class="col-md-6 d-grid">
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </div>
+                            <div class="col-md-6 d-grid">
+                                <a asp-action="List" asp-controller="Employee" class="btn btn-secondary">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

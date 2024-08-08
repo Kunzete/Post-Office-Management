@@ -1,0 +1,108 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    @if (User.IsInRole("admin"))
+    {
+        <li class="nav-item dropdown pe-3">
+
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+            </a><!-- End Profile Iamge Icon -->
+
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+
+                <li>
+                    <a class="dropdown-item d-flex align-items-center" asp-area="Identity" asp-page="/Account/Manage/Index">
+                        <i class="bi bi-person"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+
+                <li>
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="dropdown-item d-flex align-items-center">
+                            <i class="bi bi-person"></i>
+                            <span>Logout</span>
+                        </button>
+                    </form>
+                </li>
+
+            </ul><!-- End Profile Dropdown Items -->
+        </li>
+
+    }
+    else @if (User.IsInRole("employee"))
+    {
+        <li class="nav-item dropdown pe-3">
+
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                <span class="d-none d-md-block dropdown-toggle ps-2">Employee</span>
+            </a><!-- End Profile Iamge Icon -->
+
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+
+                <li>
+                    <a class="dropdown-item d-flex align-items-center" asp-area="Identity" asp-page="/Account/Manage/Index">
+                        Profile
+                        <i class="bi bi-person"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+
+                <li>
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="dropdown-item d-flex align-items-center">
+                            <i class="bi bi-person"></i>
+                            <span>Logout</span>
+                        </button>
+                    </form>
+                </li>
+
+            </ul><!-- End Profile Dropdown Items -->
+        </li>
+    }
+    else @if (User.IsInRole("user"))
+    {
+        <li class="nav-item dropdown pe-3">
+
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                <span class="d-none d-md-block dropdown-toggle ps-2">User</span>
+            </a><!-- End Profile Iamge Icon -->
+
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+
+                <li>
+                    <a class="dropdown-item d-flex align-items-center" asp-area="Identity" asp-page="/Account/Manage/Index">
+                        <i class="bi bi-person"></i>
+                        <span>My Profile</span>
+                    </a>
+                </li>
+
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+
+                <li>
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="dropdown-item d-flex align-items-center">
+                            <i class="bi bi-person"></i>
+                            <span>Logout</span>
+                        </button>
+                    </form>
+                </li>
+
+            </ul><!-- End Profile Dropdown Items -->
+        </li>
+    }
+}
