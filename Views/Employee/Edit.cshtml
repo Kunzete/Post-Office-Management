@@ -17,19 +17,12 @@
                 <div class="card-body">
                     <form asp-action="Edit" method="post">
                         <input type="hidden" asp-for="EmployeeID" />
+                        <input asp-for="Password" class="form-control" type="hidden"/>
                         <div class="form-group row">
                             <label asp-for="LoginIdentity" class="col-md-4 col-form-label">Username</label>
                             <div class="col-md-8">
                                 <input asp-for="LoginIdentity" class="form-control" />
                                 <span asp-validation-for="LoginIdentity" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="form-group row">
-                            <label asp-for="Password" class="col-md-4 col-form-label"></label>
-                            <div class="col-md-8">
-                                <input asp-for="Password" class="form-control"/>
-                                <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                         </div>
                         <br />

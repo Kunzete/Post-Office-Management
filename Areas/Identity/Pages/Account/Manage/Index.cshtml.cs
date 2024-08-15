@@ -55,6 +55,9 @@ namespace Post_Office_Management.Areas.Identity.Pages.Account.Manage
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            [Display(Name = "Username")]
+            public string UserName { get; set; }
+
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
@@ -69,7 +72,8 @@ namespace Post_Office_Management.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                UserName = userName
             };
         }
 
@@ -100,12 +104,14 @@ namespace Post_Office_Management.Areas.Identity.Pages.Account.Manage
             }
 
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
-            if (Input.PhoneNumber != phoneNumber)
+            var userName = await _userManager.GetUserNameAsync(user);
+            if (Input.PhoneNumber != phoneNumber || Input.UserName != userName)
             {
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
-                if (!setPhoneResult.Succeeded)
+                var setUsername = await _userManager.SetUserNameAsync(user, Input.UserName);
+                if (!setPhoneResult.Succeeded || !setUsername.Succeeded)
                 {
-                    StatusMessage = "Unexpected error when trying to set phone number.";
+                    StatusMessage = "Unexpected error.";
                     return RedirectToPage();
                 }
             }

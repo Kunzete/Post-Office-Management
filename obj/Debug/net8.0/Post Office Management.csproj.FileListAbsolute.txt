@@ -850,6 +850,7 @@ D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.MvcApplication
 D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.MvcApplicationPartsAssemblyInfo.cache
 D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.RazorAssemblyInfo.cache
 D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.RazorAssemblyInfo.cs
+D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.sourcelink.json
 D:\Post-Office-Management\obj\Debug\net8.0\staticwebassets.build.json
 D:\Post-Office-Management\obj\Debug\net8.0\staticwebassets.development.json
 D:\Post-Office-Management\obj\Debug\net8.0\staticwebassets\msbuild.Post Office Management.Microsoft.AspNetCore.StaticWebAssets.props

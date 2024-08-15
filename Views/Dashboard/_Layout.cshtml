@@ -36,7 +36,6 @@
 </head>
 
 <body>
-
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -74,7 +73,7 @@
             <ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="/Dashboard">
+                    <a class="nav-link " href="/Dashboard" style="cursor:pointer; user-select: none;">
                         <i class="bi bi-grid"></i>
                         <span>Admin Dashboard</span>
                     </a>
@@ -82,7 +81,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" style="cursor:pointer; user-select: none;">
-                        <i class="bi bi-menu-button-wide"></i><span>Employee Management</span><i class="bi bi-chevron-down ms-auto"></i>
+                        <i class="bi bi-people"></i><span>Employee Management</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
@@ -101,17 +100,17 @@
                 </li><!-- End Employee Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" style="cursor:pointer; user-select: none;">
                         <i class="bi bi-journal-text"></i><span>Service Management</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="#">
+                            <a asp-action="Create" asp-controller="Service">
                                 <i class="bi bi-circle"></i><span>Create Service</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a asp-action="List" asp-controller="Service">
                                 <i class="bi bi-circle"></i><span>List Service</span>
                             </a>
                         </li>
@@ -119,23 +118,57 @@
                 </li><!-- End Service Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-layout-text-window-reverse"></i><span>Deliverable Management</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" style="cursor:pointer; user-select: none;">
+                        <i class="bi bi-box"></i><span>Deliverable Management</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="#">
+                            <a asp-action="Create" asp-controller="Deliverable">
                                 <i class="bi bi-circle"></i><span>Create Deliverable</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a asp-action="List" asp-controller="Deliverable">
                                 <i class="bi bi-circle"></i><span>Deliverable List</span>
                             </a>
                         </li>
                     </ul>
                 </li><!-- End Deliverable Nav -->
 
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#charges-nav" data-bs-toggle="collapse" style="cursor:pointer; user-select: none;">
+                        <i class="bi bi-currency-dollar"></i><span>Charges Management</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="charges-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a asp-action="Create" asp-controller="Charge">
+                                <i class="bi bi-circle"></i><span>Create Charges</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-action="List" asp-controller="Charge">
+                                <i class="bi bi-circle"></i><span>Charges List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- End Charges Nav -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#location-nav" data-bs-toggle="collapse" style="cursor:pointer; user-select: none;">
+                        <i class="bi bi-building"></i><span>Location Management</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="location-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a asp-action="Create" asp-controller="Location">
+                                <i class="bi bi-circle"></i><span>Add Office</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-action="List" asp-controller="Location">
+                                <i class="bi bi-circle"></i><span>Office List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- End Office Nav -->
             </ul>
 
         </aside>
@@ -157,37 +190,17 @@
                 </li><!-- End Dashboard Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-menu-button-wide"></i><span>Employee Management</span><i class="bi bi-chevron-down ms-auto"></i>
-                    </a>
-                    <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-
-                        <li>
-                            <a href="#">
-                                <i class="bi bi-circle"></i><span>Create Employee</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                <i class="bi bi-circle"></i><span>List Employee</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li><!-- End Employee Nav -->
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" style="cursor:pointer; user-select: none;">
                         <i class="bi bi-journal-text"></i><span>Service Management</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="#">
+                            <a asp-action="Create" asp-controller="Service">
                                 <i class="bi bi-circle"></i><span>Create Service</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a asp-action="List" asp-controller="Service">
                                 <i class="bi bi-circle"></i><span>List Service</span>
                             </a>
                         </li>
@@ -195,23 +208,40 @@
                 </li><!-- End Service Nav -->
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-layout-text-window-reverse"></i><span>Deliverable Management</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" style="cursor:pointer; user-select: none;">
+                        <i class="bi bi-box"></i><span>Deliverable Management</span><i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="#">
+                            <a asp-action="Create" asp-controller="Deliverable">
                                 <i class="bi bi-circle"></i><span>Create Deliverable</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a asp-action="List" asp-controller="Deliverable">
                                 <i class="bi bi-circle"></i><span>Deliverable List</span>
                             </a>
                         </li>
                     </ul>
                 </li><!-- End Deliverable Nav -->
 
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#charges-nav" data-bs-toggle="collapse" style="cursor:pointer; user-select: none;">
+                        <i class="bi bi-currency-dollar"></i><span>Charges Management</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="charges-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a asp-action="Create" asp-controller="Charge">
+                                <i class="bi bi-circle"></i><span>Create Charges</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-action="List" asp-controller="Charge">
+                                <i class="bi bi-circle"></i><span>Charges List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- End Charges Nav -->
             </ul>
 
         </aside>
@@ -269,13 +299,6 @@
     <main id="main" class="main">
         @RenderBody()
     </main>
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-        </div>
-    </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

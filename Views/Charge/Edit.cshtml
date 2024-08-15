@@ -1,0 +1,85 @@
+﻿@model Post_Office_Management.Models.ChargeDetail
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> _userManager
+
+@{
+    ViewData["Title"] = "Edit Charge Detail";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-3 py-2">
+                <div class="card-header">
+                    <h3>Edit Charge Detail</h3>
+                </div>
+                <br />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <input asp-for="CreatedBy" hidden/>
+                        <input asp-for="LastModifiedBy" hidden/>
+
+                        <div class="form-group row">
+                            <label asp-for="ServiceTypeId" class="col-md-4 col-form-label">Service Type</label>
+                            <div class="col-md-8">
+                                <select asp-for="ServiceTypeId" class="form-control" required>
+                                    @foreach (var serviceType in ViewBag.ServiceTypes)
+                                    {
+                                        <option value="@serviceType.Id">@serviceType.Name</option>
+                                    }
+                                </select>
+                                <span asp-validation-for="ServiceTypeId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="form-group row">
+                            <label asp-for="Charge" class="col-md-4 col-form-label">Charge</label>
+                            <div class="col-md-8">
+                                <input asp-for="Charge" class="form-control" required />
+                                <span asp-validation-for="Charge" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="form-group row">
+                            <label asp-for="EffectiveDate" class="col-md-4 col-form-label">Effective Date</label>
+                            <div class="col-md-8">
+                                <input asp-for="EffectiveDate" class="form-control" type="date" required />
+                                <span asp-validation-for="EffectiveDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="form-group row">
+                            <label asp-for="EndDate" class="col-md-4 col-form-label">End Date</label>
+                            <div class="col-md-8">
+                                <input asp-for="EndDate" class="form-control" type="date" placeholder="mm/dd/yyyy" />
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div class="row">
+                            <div class="col-md-6 d-grid">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                            <div class="col-md-6 d-grid">
+                                <a asp-action="List" class="btn btn-secondary">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

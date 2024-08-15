@@ -1,0 +1,123 @@
+﻿@model Post_Office_Management.Models.Delivery
+
+@{
+    ViewData["Title"] = "Create Delivery";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-3 py-2">
+                <div class="card-header">
+                    <h3>Create Delivery</h3>
+                </div>
+                <br/>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post">
+                        <div class="form-group row">
+                            <label asp-for="DeliveryNumber" class="col-md-4 col-form-label">Delivery Number</label>
+                            <div class="col-md-8">
+                                <input asp-for="DeliveryNumber" class="form-control" />
+                                <span asp-validation-for="DeliveryNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label asp-for="Status" class="col-md-4 col-form-label">Status</label>
+                            <div class="col-md-8">
+                                <input asp-for="Status" class="form-control" />
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label asp-for="DateOfPosting" class="col-md-4 col-form-label">Date of Posting</label>
+                            <div class="col-md-8">
+                                <input asp-for="DateOfPosting" class="form-control" />
+                                <span asp-validation-for="DateOfPosting" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label asp-for="DateOfReceipt" class="col-md-4 col-form-label">Date of Receipt</label>
+                            <div class="col-md-8">
+                                <input asp-for="DateOfReceipt" class="form-control" />
+                                <span asp-validation-for="DateOfReceipt" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label asp-for="DateOfDelivery" class="col-md-4 col-form-label">Date of Delivery</label>
+                            <div class="col-md-8">
+                                <input asp-for="DateOfDelivery" class="form-control" />
+                                <span asp-validation-for="DateOfDelivery" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label asp-for="ReceiverName" class="col-md-4 col-form-label">Receiver Name</label>
+                            <div class="col-md-8">
+                                <input asp-for="ReceiverName" class="form-control" />
+                                <span asp-validation-for="ReceiverName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label asp-for="ReceiverContactNumber" class="col-md-4 col-form-label">Receiver Contact Number</label>
+                            <div class="col-md-8">
+                                <input asp-for="ReceiverContactNumber" class="form-control" />
+                                <span asp-validation-for="ReceiverContactNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label asp-for="Weight" class="col-md-4 col-form-label">Weight</label>
+                            <div class="col-md-8">
+                                <input asp-for="Weight" class="form-control" />
+                                <span asp-validation-for="Weight" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label asp-for="ServiceTypeId" class="col-md-4 col-form-label">Service Type</label>
+                            <div class="col-md-8">
+                                <select asp-for="ServiceTypeId" class="form-control" asp-items="ViewBag.ServiceTypeId"></select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label asp-for="FromOfficeId" class="col-md-4 col-form-label">From Office</label>
+                            <div class="col-md-8">
+                                <select asp-for="FromOfficeId" class="form-control" asp-items="ViewBag.FromOfficeId"></select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label asp-for="ToOfficeId" class="col-md-4 col-form-label">To Office</label>
+                            <div class="col-md-8">
+                                <select asp-for="ToOfficeId" class="form-control" asp-items="ViewBag.ToOfficeId"></select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row offset-4">
+                            <div class="col-md-6 d-grid">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                            <div class="col-md-6 d-grid">
+                                <a asp-action="List" asp-controller="Deliverable" class="btn btn-secondary">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

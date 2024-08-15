@@ -1,0 +1,58 @@
+﻿ @model Post_Office_Management.Models.ServiceType
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-3 py-2">
+                <div class="card-header">
+                    <h3>Delete Service Type</h3>
+                </div>
+                <br />
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-md-4 col-form-label">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            @Html.DisplayNameFor(model => model.BaseCharge)
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.BaseCharge)
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            @Html.DisplayNameFor(model => model.IsVPP)
+                        </dt>
+                        <dd class="col-md-8">
+                            <span>
+                                @(Model.IsVPP ? "Yes" : "No")
+                            </span>
+                        </dd>
+                    </dl>
+
+                    <p>Are you sure you want to delete this service type?</p>
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="row">
+                            <div class="col-md-6 d-grid">
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </div>
+                            <div class="col-md-6 d-grid">
+                                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

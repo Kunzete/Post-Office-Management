@@ -51,19 +51,19 @@ namespace Post_Office_Management.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "00f05b6d-8885-4dc9-9f9e-25f62843a26d",
+                            Id = "6ebb24aa-01a8-4679-93ac-28a453f20b8a",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "2ad55866-e53b-4c29-83d6-61ffa9d9c0a4",
+                            Id = "a9a3a16d-3431-422c-b081-83d86d58a8c0",
                             Name = "employee",
                             NormalizedName = "employee"
                         },
                         new
                         {
-                            Id = "61724045-cc05-4a58-afb0-3278b7d384bf",
+                            Id = "b3c6bef0-38c5-4333-a173-c5c679c27c36",
                             Name = "user",
                             NormalizedName = "user"
                         });
@@ -244,6 +244,103 @@ namespace Post_Office_Management.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Post_Office_Management.Models.ChargeDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Charge")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EffectiveDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ServiceTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServiceTypeId");
+
+                    b.ToTable("Charges");
+                });
+
+            modelBuilder.Entity("Post_Office_Management.Models.Delivery", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("DateOfDelivery")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfPosting")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateOfReceipt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeliveryNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FromOfficeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReceiverContactNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReceiverName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ServiceTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ToOfficeId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Weight")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FromOfficeId");
+
+                    b.HasIndex("ServiceTypeId");
+
+                    b.HasIndex("ToOfficeId");
+
+                    b.ToTable("Deliverables");
+                });
+
             modelBuilder.Entity("Post_Office_Management.Models.Employee", b =>
                 {
                     b.Property<int>("EmployeeID")
@@ -296,6 +393,54 @@ namespace Post_Office_Management.Migrations
                     b.ToTable("Employees");
                 });
 
+            modelBuilder.Entity("Post_Office_Management.Models.Office", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Locations");
+                });
+
+            modelBuilder.Entity("Post_Office_Management.Models.ServiceType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("BaseCharge")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("IsVPP")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Services");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -345,6 +490,58 @@ namespace Post_Office_Management.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Post_Office_Management.Models.ChargeDetail", b =>
+                {
+                    b.HasOne("Post_Office_Management.Models.ServiceType", "ServiceType")
+                        .WithMany("ChargeDetails")
+                        .HasForeignKey("ServiceTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ServiceType");
+                });
+
+            modelBuilder.Entity("Post_Office_Management.Models.Delivery", b =>
+                {
+                    b.HasOne("Post_Office_Management.Models.Office", "FromOffice")
+                        .WithMany("FromDeliveries")
+                        .HasForeignKey("FromOfficeId")
+                        .IsRequired()
+                        .HasConstraintName("FK_Delivery_FromOffice");
+
+                    b.HasOne("Post_Office_Management.Models.ServiceType", "ServiceType")
+                        .WithMany("Deliveries")
+                        .HasForeignKey("ServiceTypeId")
+                        .IsRequired()
+                        .HasConstraintName("FK_Delivery_ServiceType");
+
+                    b.HasOne("Post_Office_Management.Models.Office", "ToOffice")
+                        .WithMany("ToDeliveries")
+                        .HasForeignKey("ToOfficeId")
+                        .IsRequired()
+                        .HasConstraintName("FK_Delivery_ToOffice");
+
+                    b.Navigation("FromOffice");
+
+                    b.Navigation("ServiceType");
+
+                    b.Navigation("ToOffice");
+                });
+
+            modelBuilder.Entity("Post_Office_Management.Models.Office", b =>
+                {
+                    b.Navigation("FromDeliveries");
+
+                    b.Navigation("ToDeliveries");
+                });
+
+            modelBuilder.Entity("Post_Office_Management.Models.ServiceType", b =>
+                {
+                    b.Navigation("ChargeDetails");
+
+                    b.Navigation("Deliveries");
                 });
 #pragma warning restore 612, 618
         }

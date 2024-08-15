@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Post Office Management")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0bfa7ab3162736d524580f97097395600fae294a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6cba8154ed51bf29753c1951b15b51fc0f2c9d99")]
 [assembly: System.Reflection.AssemblyProductAttribute("Post Office Management")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Post Office Management")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

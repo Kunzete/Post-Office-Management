@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Post_Office_Management.Models.Delivery>
+
+@{
+    ViewData["Title"] = "Delivery List";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+<div class="container my-3 mx-auto">
+    <div class="d-flex justify-content-between">
+        <h1>Delivery List</h1>
+
+        <p>
+            <a asp-action="Create" class="btn btn-primary">Create New</a>
+        </p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DeliveryNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateOfPosting)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateOfReceipt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateOfDelivery)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ReceiverName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ReceiverContactNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Weight)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ServiceType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FromOffice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ToOffice)
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeliveryNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfPosting)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfReceipt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfDelivery)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReceiverName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReceiverContactNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Weight)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ServiceType.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FromOffice.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ToOffice.Id)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
