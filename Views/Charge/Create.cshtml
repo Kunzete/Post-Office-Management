@@ -33,6 +33,16 @@
                         </div>
                         <br />
                         <div class="form-group row">
+                            <label asp-for="WeightRange" class="col-md-4 col-form-label"></label>
+                            <div class="col-md-8">
+                                <select asp-for="WeightRange" class="form-control" asp-items="Html.GetEnumSelectList<WeightRange>()" required>
+                                    <option value="">Select Weight Range</option>
+                                </select>
+                                <span asp-validation-for="WeightRange" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
                             @Html.LabelFor(m => m.CreatedBy, new { @class = "col-md-4 col-form-label" })
                             <div class="col-md-8">
                                 <input asp-for="CreatedBy" class="form-control" value="@_userManager.GetUserAsync(User).Result.Email" />

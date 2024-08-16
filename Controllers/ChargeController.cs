@@ -61,6 +61,14 @@ namespace Post_Office_Management.Controllers
                 model.CreatedDate = DateTime.Now;
                 model.LastModifiedDate = DateTime.Now;
 
+                // Validate WeightRange enum
+                if (!Enum.IsDefined(typeof(WeightRange), model.WeightRange))
+                {
+                    ModelState.AddModelError("WeightRange", "Invalid Weight Range");
+                    ViewBag.ServiceTypes = _db.Services.ToList();
+                    return View(model);
+                }
+
                 try
                 {
                     _db.Charges.Add(model);
@@ -124,5 +132,18 @@ namespace Post_Office_Management.Controllers
             return View(charges);
         }
 
+        public IActionResult Delete(int id)
+        {
+            var charge = _db.Charges.Find(id);
+            return View(charge);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(ChargeDetail pay)
+        {
+            _db.Charges.Remove(pay);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("List");
+        }
     }
 }

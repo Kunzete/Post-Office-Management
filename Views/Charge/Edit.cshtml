@@ -35,7 +35,16 @@
                             </div>
                         </div>
                         <br />
-
+                        <div class="form-group row">
+                            <label asp-for="WeightRange" class="col-md-4 col-form-label"></label>
+                            <div class="col-md-8">
+                                <select asp-for="WeightRange" class="form-control" asp-items="Html.GetEnumSelectList<WeightRange>()" required>
+                                <option value="">Select Weight Range</option>
+                                </select>
+                                <span asp-validation-for="WeightRange" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
                         <div class="form-group row">
                             <label asp-for="Charge" class="col-md-4 col-form-label">Charge</label>
                             <div class="col-md-8">

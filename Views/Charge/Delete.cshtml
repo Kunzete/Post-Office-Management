@@ -1,0 +1,76 @@
+﻿@model Post_Office_Management.Models.ChargeDetail
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-3 py-2">
+                <div class="card-header">
+                    <h3>Delete Charges</h3>
+                </div>
+                <br />
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-md-4 col-form-label">
+                            Service:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.ServiceTypeId)
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Weight:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.WeightRange)
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Charges:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.Charge)
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Effective Date:
+                        </dt>
+                        <dd class="col-md-8">
+                            @(Model.EffectiveDate.ToShortDateString().ToString())
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            End Date:
+                        </dt>
+                        <dd class="col-md-8">
+                            @(Model.EndDate.HasValue ? (Model.EndDate.Value.ToShortDateString().ToString()) : "Empty")
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Created:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.CreatedBy) - @(Model.CreatedDate.ToShortDateString().ToString())
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Last Modified:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.LastModifiedBy) - @(Model.LastModifiedDate.ToShortDateString().ToString())
+                        </dd>
+                    </dl>
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="row">
+                            <div class="col-md-6 d-grid">
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </div>
+                            <div class="col-md-6 d-grid">
+                                <a asp-action="List" class="btn btn-secondary">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

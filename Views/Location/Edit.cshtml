@@ -1,0 +1,63 @@
+﻿@model Post_Office_Management.Models.Office
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-3 py-2">
+                <div class="card-header">
+                    <h3>Update Location</h3>
+                </div>
+                <br />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group row">
+                            <label asp-for="City" class="col-md-4 col-form-label"></label>
+                            <div class="col-md-8">
+                                <input asp-for="City" class="form-control" />
+                                <span asp-validation-for="City" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label asp-for="Address" class="col-md-4 col-form-label"></label>
+                            <div class="col-md-8">
+                                <input asp-for="Address" class="form-control" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label asp-for="ContactNumber" class="col-md-4 col-form-label">Number</label>
+                            <div class="col-md-8">
+                                <input class="form-control" asp-for="ContactNumber" />
+                                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row offset-4">
+                            <div class="col-md-6 d-grid">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                            <div class="col-md-6 d-grid">
+                                <a asp-action="List" class="btn btn-secondary">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

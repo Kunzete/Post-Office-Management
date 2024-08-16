@@ -577,6 +577,16 @@ D:\Post-Office-Management-main\obj\Debug\net8.0\refint\Post Office Management.dl
 D:\Post-Office-Management-main\obj\Debug\net8.0\Post Office Management.pdb
 D:\Post-Office-Management-main\obj\Debug\net8.0\Post Office Management.genruntimeconfig.cache
 D:\Post-Office-Management-main\obj\Debug\net8.0\ref\Post Office Management.dll
+D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.csproj.AssemblyReference.cache
+D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.GeneratedMSBuildEditorConfig.editorconfig
+D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.AssemblyInfoInputs.cache
+D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.AssemblyInfo.cs
+D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.csproj.CoreCompileInputs.cache
+D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.MvcApplicationPartsAssemblyInfo.cs
+D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.MvcApplicationPartsAssemblyInfo.cache
+D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.RazorAssemblyInfo.cache
+D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.RazorAssemblyInfo.cs
+D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.sourcelink.json
 D:\Post-Office-Management\bin\Debug\net8.0\appsettings.Development.json
 D:\Post-Office-Management\bin\Debug\net8.0\appsettings.json
 D:\Post-Office-Management\bin\Debug\net8.0\Post Office Management.staticwebassets.runtime.json
@@ -841,16 +851,6 @@ D:\Post-Office-Management\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawin
 D:\Post-Office-Management\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\Post-Office-Management\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\Post-Office-Management\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
-D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.csproj.AssemblyReference.cache
-D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.GeneratedMSBuildEditorConfig.editorconfig
-D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.AssemblyInfoInputs.cache
-D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.AssemblyInfo.cs
-D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.csproj.CoreCompileInputs.cache
-D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.MvcApplicationPartsAssemblyInfo.cs
-D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.MvcApplicationPartsAssemblyInfo.cache
-D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.RazorAssemblyInfo.cache
-D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.RazorAssemblyInfo.cs
-D:\Post-Office-Management\obj\Debug\net8.0\Post Office Management.sourcelink.json
 D:\Post-Office-Management\obj\Debug\net8.0\staticwebassets.build.json
 D:\Post-Office-Management\obj\Debug\net8.0\staticwebassets.development.json
 D:\Post-Office-Management\obj\Debug\net8.0\staticwebassets\msbuild.Post Office Management.Microsoft.AspNetCore.StaticWebAssets.props

@@ -39,5 +39,37 @@ namespace Post_Office_Management.Controllers
             }
             return View(location);
         }
+
+        public IActionResult Edit(int id)
+        {
+            var office = _db.Locations.Find(id);
+            return View(office);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Office location)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Locations.Update(location);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("List");
+            }
+            return View(location);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var office = _db.Locations.Find(id);
+            return View(office);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Office location)
+        {
+            _db.Locations.Remove(location);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("List");
+        }
     }
 }

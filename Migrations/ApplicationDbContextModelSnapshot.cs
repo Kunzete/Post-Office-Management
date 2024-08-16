@@ -17,7 +17,7 @@ namespace Post_Office_Management.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.7")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -51,19 +51,19 @@ namespace Post_Office_Management.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6ebb24aa-01a8-4679-93ac-28a453f20b8a",
+                            Id = "0b6a3e4d-585f-4f29-b774-5389d457fb1f",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "a9a3a16d-3431-422c-b081-83d86d58a8c0",
+                            Id = "ea6cb204-37eb-47c9-abdf-312aa79a5e4d",
                             Name = "employee",
                             NormalizedName = "employee"
                         },
                         new
                         {
-                            Id = "b3c6bef0-38c5-4333-a173-c5c679c27c36",
+                            Id = "1029b612-a5dd-4978-8c9c-14d8a88ba88d",
                             Name = "user",
                             NormalizedName = "user"
                         });
@@ -278,6 +278,9 @@ namespace Post_Office_Management.Migrations
                     b.Property<int>("ServiceTypeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("WeightRange")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ServiceTypeId");
@@ -292,6 +295,9 @@ namespace Post_Office_Management.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Charge")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("DateOfDelivery")
                         .HasColumnType("datetime2");

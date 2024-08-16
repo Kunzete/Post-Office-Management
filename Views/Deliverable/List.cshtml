@@ -5,100 +5,63 @@
     Layout = "~/Views/Dashboard/_Layout.cshtml";
 }
 
-<div class="container my-3 mx-auto">
-    <div class="d-flex justify-content-between">
-        <h1>Delivery List</h1>
+<div class="card">
+    <div class="container-fluid my-3">
+        <div class="card-header">
+            <div class="d-flex justify-content-between">
+                <h3>Delivery List</h3>
 
-        <p>
-            <a asp-action="Create" class="btn btn-primary">Create New</a>
-        </p>
-    </div>
-
-    <div class="table-responsive">
-        <table class="table table-hover table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DeliveryNumber)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Status)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DateOfPosting)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DateOfReceipt)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DateOfDelivery)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ReceiverName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ReceiverContactNumber)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Weight)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ServiceType)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FromOffice)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ToOffice)
-                    </th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DeliveryNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Status)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DateOfPosting)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DateOfReceipt)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DateOfDelivery)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ReceiverName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ReceiverContactNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Weight)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ServiceType.Id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FromOffice.Id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ToOffice.Id)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Details</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                <p>
+                    <a asp-action="Create" class="btn btn-primary">Create New</a>
+                </p>
+            </div>
+        </div>
+        <br />
+        <div class="card-body">
+            <div class="table-responsive" style="overflow-x:auto">
+                <table class="table table-hover table-bordered datatable">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" style="width: 10%">Tracking ID</th>
+                            <th scope="col" style="width: 10%">Created</th>
+                            <th scope="col" style="width: 15%">Receiver</th>
+                            <th scope="col" style="width: 10%">Number</th>
+                            <th scope="col" style="width: 5%">Weight</th>
+                            <th scope="col" style="width: 10%">Service</th>
+                            <th scope="col" style="width: 10%">From</th>
+                            <th scope="col" style="width: 10%">To</th>
+                            <th scope="col" style="width: 5%">Charges</th>
+                            <th scope="col" style="width: 10%">Status</th>
+                            <th scope="col" style="width: 10%">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.DeliveryNumber)</td>
+                                <td>@(item.DateOfPosting.ToShortDateString())</td>
+                                <td>@Html.DisplayFor(modelItem => item.ReceiverName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ReceiverContactNumber)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Weight)g</td>
+                                <td>@Html.DisplayFor(modelItem => item.ServiceType.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.FromOffice.City)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ToOffice.City)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Charge) PKR</td>
+                                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

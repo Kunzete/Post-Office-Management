@@ -12,87 +12,102 @@
     }
 </style>
 
-<div class="container my-3 mx-auto">
-    <div class="d-flex justify-content-between">
-        <h1>Charge Detail List</h1>
-
-        <p>
-            <a asp-action="Create" class="btn btn-primary">Create New</a>
-        </p>
+<div class="card">
+    <div class="container-fluid my-3">
+        <div class="card-header">
+            <div class="d-flex justify-content-between">
+                <h3>Charge List</h3>
+                <p>
+                    <a asp-action="Create" class="btn btn-primary">Create New</a>
+                </p>
+            </div>
+        </div>
+        <br/>
+        <div class="card-body table-responsive">
+            <table class="table table-borderless table-hover datatable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            Service
+                        </th>
+                        <th>
+                            Weight
+                        </th>
+                        <th>
+                            Charge
+                        </th>
+                        <th>
+                            Start
+                        </th>
+                        <th>
+                            End
+                        </th>
+                        <th>
+                            Created
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Edited
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ServiceType.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.WeightRange)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Charge) PKR
+                            </td>
+                            <td>
+                                <p>
+                                    @(item.EffectiveDate.ToShortDateString())
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    @(item.EndDate.HasValue ? item.EndDate.Value.ToShortDateString() : "Empty")
+                                </p>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedBy)
+                            </td>
+                            <td>
+                                <p>
+                                    @(item.CreatedDate.ToShortDateString())
+                                </p>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LastModifiedBy)
+                            </td>
+                            <td>
+                                <p>
+                                    @(item.LastModifiedDate.ToShortDateString())
+                                </p>
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <table class="table table-hover table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th>
-                    Service Type
-                </th>
-                <th>
-                    Charge
-                </th>
-                <th>
-                    Effective Date
-                </th>
-                <th>
-                    End Date
-                </th>
-                <th>
-                    Created By
-                </th>
-                <th>
-                    Created Date
-                </th>
-                <th>
-                    LastModified By
-                </th>
-                <th>
-                    LastModified Date
-                </th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ServiceType.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Charge)
-                    </td>
-                    <td>
-                        <p>
-                            @(item.EffectiveDate.ToShortDateString())
-                        </p>
-                    </td>
-                    <td>
-                        <p>
-                            @(item.EndDate.HasValue ? item.EndDate.Value.ToShortDateString() : "Empty")
-                        </p>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreatedBy)
-                    </td>
-                    <td>
-                        <p>
-                            @(item.CreatedDate.ToShortDateString())
-                        </p>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.LastModifiedBy)
-                    </td>
-                    <td>
-                        <p>
-                            @(item.LastModifiedDate.ToShortDateString())
-                        </p>
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
 </div>
