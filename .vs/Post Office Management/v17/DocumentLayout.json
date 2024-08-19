@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "D:\\Post-Office-Management\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6D95642B-0B63-4E6D-A2FA-F343E93CDEC2}|Post Office Management.csproj|d:\\post-office-management\\views\\tracking\\track.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6D95642B-0B63-4E6D-A2FA-F343E93CDEC2}|Post Office Management.csproj|solutionrelative:views\\tracking\\track.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{6D95642B-0B63-4E6D-A2FA-F343E93CDEC2}|Post Office Management.csproj|d:\\post-office-management\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D95642B-0B63-4E6D-A2FA-F343E93CDEC2}|Post Office Management.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6D95642B-0B63-4E6D-A2FA-F343E93CDEC2}|Post Office Management.csproj|d:\\post-office-management\\controllers\\trackingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D95642B-0B63-4E6D-A2FA-F343E93CDEC2}|Post Office Management.csproj|solutionrelative:controllers\\trackingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D95642B-0B63-4E6D-A2FA-F343E93CDEC2}|Post Office Management.csproj|d:\\post-office-management\\models\\delivery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D95642B-0B63-4E6D-A2FA-F343E93CDEC2}|Post Office Management.csproj|solutionrelative:models\\delivery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6D95642B-0B63-4E6D-A2FA-F343E93CDEC2}|Post Office Management.csproj|d:\\post-office-management\\views\\home\\parcel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6D95642B-0B63-4E6D-A2FA-F343E93CDEC2}|Post Office Management.csproj|solutionrelative:views\\home\\parcel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,49 +18,36 @@
       "DocumentGroups": [
         {
           "DockedHeight": 365,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Post-Office-Management\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Post-Office-Management\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAE0AAAAAAAAAAAAmwMYAAABPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-19T06:09:51.088Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Track.cshtml",
-              "DocumentMoniker": "D:\\Post-Office-Management\\Views\\Tracking\\Track.cshtml",
-              "RelativeDocumentMoniker": "Views\\Tracking\\Track.cshtml",
-              "ToolTip": "D:\\Post-Office-Management\\Views\\Tracking\\Track.cshtml",
-              "RelativeToolTip": "Views\\Tracking\\Track.cshtml",
-              "ViewState": "AQIAABMAAAAAAAAAAAAAABoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-16T17:21:20.683Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Delivery.cs",
-              "DocumentMoniker": "D:\\Post-Office-Management\\Models\\Delivery.cs",
-              "RelativeDocumentMoniker": "Models\\Delivery.cs",
-              "ToolTip": "D:\\Post-Office-Management\\Models\\Delivery.cs",
-              "RelativeToolTip": "Models\\Delivery.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAUwBUAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-16T17:14:50.348Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TrackingController.cs",
-              "DocumentMoniker": "D:\\Post-Office-Management\\Controllers\\TrackingController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TrackingController.cs",
-              "ToolTip": "D:\\Post-Office-Management\\Controllers\\TrackingController.cs",
-              "RelativeToolTip": "Controllers\\TrackingController.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABIAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-16T16:56:10.055Z",
+              "Title": "Parcel.cshtml",
+              "DocumentMoniker": "D:\\Post-Office-Management\\Views\\Home\\Parcel.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Parcel.cshtml",
+              "ToolTip": "D:\\Post-Office-Management\\Views\\Home\\Parcel.cshtml",
+              "RelativeToolTip": "Views\\Home\\Parcel.cshtml",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAACwAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-19T01:48:21.789Z",
               "EditorCaption": ""
             }
           ]

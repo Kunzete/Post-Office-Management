@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Post_Office_Management.Models.ChargeDetail>
+
+@{
+    ViewData["Title"] = "Charges";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+<style>
+    th {
+        text-overflow: wrap;
+        font-wrap: pretty;
+    }
+</style>
+
+<div class="card">
+    <div class="container-fluid my-3">
+        <div class="card-header">
+            <div class="d-flex justify-content-between">
+                <h3>Our Charges</h3>
+            </div>
+        </div>
+        <br />
+        <div class="card-body table-responsive">
+            <table class="table table-borderless table-hover datatable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            Service
+                        </th>
+                        <th>
+                            Weight
+                        </th>
+                        <th>
+                            Charge
+                        </th>
+                        <th>
+                            Start
+                        </th>
+                        <th>
+                            End
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ServiceType.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.WeightRange)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Charge) PKR
+                            </td>
+                            <td>
+                                <p>
+                                    @(item.EffectiveDate.ToShortDateString())
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    @(item.EndDate.HasValue ? item.EndDate.Value.ToShortDateString() : "Empty")
+                                </p>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "k3iMEtko5yf00Xpao18aOqgIlQbkitJ3jOyD6bhjops=",
+  "Hash": "dcnbebeqBLL9eoa1ffsl/Sq/tBz5fRYvoZ8Z8gbciuk=",
   "Source": "Post Office Management",
   "BasePath": "_content/Post Office Management",
   "Mode": "Default",
@@ -13391,6 +13391,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "D:\\Post-Office-Management\\wwwroot\\parcel.css",
+      "SourceId": "Post Office Management",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Post-Office-Management\\wwwroot\\",
+      "BasePath": "_content/Post Office Management",
+      "RelativePath": "parcel.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\parcel.css"
     }
   ]
 }

@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Post_Office_Management.Models.Delivery>
-
 @{
     ViewData["Title"] = "Delivery List";
     Layout = "~/Views/Dashboard/_Layout.cshtml";
@@ -18,50 +17,65 @@
         </div>
         <br />
         <div class="card-body">
-            <div class="table-responsive" style="overflow-x:auto">
-                <table class="table table-hover table-bordered datatable">
-                    <thead class="thead-dark">
+            <table class="table table-hover datatable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" style="width: 10%">Tracking ID</th>
+                        <th scope="col" style="width: 10%">Created</th>
+                        <th scope="col" style="width: 15%">Receiver</th>
+                        <th scope="col" style="width: 10%">Number</th>
+                        <th scope="col" style="width: 5%">Weight</th>
+                        <th scope="col" style="width: 10%">Service</th>
+                        <th scope="col" style="width: 10%">From</th>
+                        <th scope="col" style="width: 10%">To</th>
+                        <th scope="col" style="width: 5%">Charges</th>
+                        <th scope="col" style="width: 10%">Status</th>
+                        <th scope="col" style="width: 10%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
                         <tr>
-                            <th scope="col" style="width: 10%">Tracking ID</th>
-                            <th scope="col" style="width: 10%">Created</th>
-                            <th scope="col" style="width: 15%">Receiver</th>
-                            <th scope="col" style="width: 10%">Number</th>
-                            <th scope="col" style="width: 5%">Weight</th>
-                            <th scope="col" style="width: 10%">Service</th>
-                            <th scope="col" style="width: 10%">From</th>
-                            <th scope="col" style="width: 10%">To</th>
-                            <th scope="col" style="width: 5%">Charges</th>
-                            <th scope="col" style="width: 10%">Status</th>
-                            <th scope="col" style="width: 10%">Actions</th>
+                            <td>@Html.DisplayFor(modelItem => item.DeliveryNumber)</td>
+                            <td>@(item.DateOfPosting.ToShortDateString())</td>
+                            <td>@Html.DisplayFor(modelItem => item.ReceiverName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ReceiverContactNumber)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Weight)g</td>
+                            <td>@Html.DisplayFor(modelItem => item.ServiceType.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.FromOffice.City)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ToOffice.City)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Charge) PKR</td>
+                            <td>
+                                @if (item.Status == DeliveryStatus.Posted)
+                                {
+                                    <span class="btn btn-primary">Posted</span>
+                                }
+                                else if (item.Status == DeliveryStatus.InTransit)
+                                {
+                                    <span class="btn btn-warning">InTransit</span>
+                                }
+                                else if (item.Status == DeliveryStatus.Delivered)
+                                {
+                                    <span class="btn btn-success">Delivered</span>
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                }
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@Html.DisplayFor(modelItem => item.DeliveryNumber)</td>
-                                <td>@(item.DateOfPosting.ToShortDateString())</td>
-                                <td>@Html.DisplayFor(modelItem => item.ReceiverName)</td>
-                                <td>@Html.DisplayFor(modelItem => item.ReceiverContactNumber)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Weight)g</td>
-                                <td>@Html.DisplayFor(modelItem => item.ServiceType.Name)</td>
-                                <td>@Html.DisplayFor(modelItem => item.FromOffice.City)</td>
-                                <td>@Html.DisplayFor(modelItem => item.ToOffice.City)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Charge) PKR</td>
-                                <td>@Html.DisplayFor(modelItem => item.Status)</td>
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

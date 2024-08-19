@@ -82,7 +82,7 @@ namespace Post_Office_Management.Areas.Identity.Pages.Account
             {
                 try
                 {
-                    var user = await _userManager.FindByNameAsync(Input.Username);
+                    var user = await _userManager.FindByNameAsync(Input.Username.Trim());
                     if (user != null && await _userManager.CheckPasswordAsync(user, Input.Password))
                     {
                         await _signInManager.SignInAsync(user, Input.RememberMe);

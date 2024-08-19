@@ -51,19 +51,19 @@ namespace Post_Office_Management.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0b6a3e4d-585f-4f29-b774-5389d457fb1f",
+                            Id = "e6ff44c6-448c-4e3e-9e0f-090a18dca32d",
                             Name = "admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "ea6cb204-37eb-47c9-abdf-312aa79a5e4d",
+                            Id = "a36dc60c-ce55-42af-be90-7d71b2bff94d",
                             Name = "employee",
                             NormalizedName = "employee"
                         },
                         new
                         {
-                            Id = "1029b612-a5dd-4978-8c9c-14d8a88ba88d",
+                            Id = "b9694a42-d92c-4e98-877b-f352a603378f",
                             Name = "user",
                             NormalizedName = "user"
                         });
@@ -326,9 +326,8 @@ namespace Post_Office_Management.Migrations
                     b.Property<int>("ServiceTypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<int>("ToOfficeId")
                         .HasColumnType("int");

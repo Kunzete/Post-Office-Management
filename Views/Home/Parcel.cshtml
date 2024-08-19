@@ -1,0 +1,86 @@
+﻿@model Delivery
+@{
+    ViewData["Title"] = "Parcel";
+}
+
+<link href="~/parcel.css" rel="stylesheet" />
+
+@if (Model != null)
+{
+    <div class="card">
+        <div class="title">Delivery Reciept</div>
+        <div class="info">
+            <div class="row">
+                <div class="col-7">
+                    <span id="heading">Date</span><br>
+                    <span id="details">@Model.DateOfPosting.ToString("dd MMMM yyyy")</span>
+                </div>
+                <div class="col-5 pull-right">
+                    <span id="heading">Delivery No.</span><br>
+                    <span id="details">@Model.DeliveryNumber</span>
+                </div>
+            </div>
+        </div>
+        <div class="pricing">
+            <div class="row">
+                <div class="col-9">
+                    <span id="name">@(Model.ReceiverName)</span>
+                </div>
+                <div class="col-3">
+                    <span id="price">@(Model.ReceiverContactNumber)</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-9">
+                    <span id="name">@(Model.ServiceType.Name)</span>
+                </div>
+                <div class="col-3">
+                    <span id="price">@(Model.ServiceType.BaseCharge) PKR</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-9">
+                    <span id="name">Weight</span>
+                </div>
+                <div class="col-3">
+                    <span id="price">@(Model.Weight)g</span>
+                </div>
+            </div>
+        </div>
+        <div class="total">
+            <div class="row">
+                <div class="col-9"></div>
+                <div class="col-3"><big>@(Model.Charge) PKR</big></div>
+            </div>
+        </div>
+        <div class="tracking">
+            <div class="title">Tracking Order</div>
+        </div>
+        <div class="progress-track">
+            <ul id="progressbar">
+
+                @if (Model.Status == DeliveryStatus.Posted)
+                {
+                    <li class="step0 active" id="step1">Ordered</li>
+                    <li class="step0 text-center" id="step2">InTransit</li>
+                    <li class="step0 text-end" id="step4">Delivered</li>
+                }else if(Model.Status == DeliveryStatus.InTransit)
+                {
+                    <li class="step0 active" id="step1">Ordered</li>
+                    <li class="step0 active text-center" id="step2">InTransit</li>
+                    <li class="step0 text-end" id="step4">Delivered</li>
+                }
+                else if (Model.Status == DeliveryStatus.Delivered)
+                {
+                    <li class="step0 active" id="step1">Ordered</li>
+                    <li class="step0 active text-center" id="step2">InTransit</li>
+                    <li class="step0 active text-end" id="step4">Delivered</li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+else
+{
+    <p class="text-muted">No parcel found with the specified tracking ID.</p>
+}

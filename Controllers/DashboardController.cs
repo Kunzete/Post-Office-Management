@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Post_Office_Management.Data;
 
 namespace Post_Office_Management.Controllers
@@ -29,7 +30,26 @@ namespace Post_Office_Management.Controllers
             var service = _db.Services;
             ViewBag.serviceCount = service.Count();
 
-            var deliveries = _db.Deliverables.ToList();
+            var OurServices = _db.Services.ToList();
+            ViewBag.OurServices = OurServices;
+
+            var OurCharges = _db.Charges.Include(s => s.ServiceType).ToList();
+            ViewBag.OurCharges = OurCharges;
+
+            var OurLocations = _db.Locations.ToList();
+            ViewBag.OurLocations = OurLocations;
+
+            var deliveries = _db.Deliverables.Include(f => f.FromOffice).Include(t => t.ToOffice).Include(s => s.ServiceType).ToList();
+
+            var topServices = _db.Deliverables
+                .GroupBy(d => d.ServiceType)
+                .OrderByDescending(g => g.Count())
+                .Take(10)
+                .Select(g => new { ServiceName = g.Key.Name, ServiceCharge = g.Key.BaseCharge, VPPStatus = g.Key.IsVPP, ServiceCount = g.Count() })
+                .ToList();
+
+
+            ViewBag.topServices = topServices;
 
             return View(deliveries);
         }

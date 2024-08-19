@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<IdentityUser> _signInManager
+@inject UserManager<IdentityUser> _userManager
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -34,7 +34,44 @@
     <script src="assets2/js/modernizr.js"></script>
 
 </head>
+<style>
 
+    .height {
+        height: 100%;
+    }
+
+    .search {
+        position: relative;
+        box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+    }
+
+        .search input {
+            height: 60px;
+            text-indent: 25px;
+            border: 2px solid #d6d4d4;
+        }
+
+
+            .search input:focus {
+                box-shadow: none;
+                border: 2px solid blue;
+            }
+
+        .search .fa-search {
+            position: absolute;
+            top: 20px;
+            left: 16px;
+        }
+
+        .search button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            height: 50px;
+            width: 110px;
+            background: blue;
+        }
+</style>
 <body data-bs-spy="scroll" data-bs-target="#navbar-example2" tabindex="0">
 
     <!-- Navigation Section Starts -->
@@ -45,7 +82,7 @@
             <div class="navigation container-fluid d-flex flex-wrap align-items-center my-2 pe-4 ps-5 ">
 
                 <div class="col-md-4 brand-logo">
-                    @if(SignInManager.IsSignedIn(User)){
+                    @if(_signInManager.IsSignedIn(User)){
                         <a href="/Dashboard" class="d-inline-flex text-decoration-none btn btn-primary btn-outline-dark rounded-5 px-5 py-3">TARS</a>
                     }
                     else{
@@ -96,7 +133,7 @@
                         </ul>
 
                         <div class="account d-flex align-items-center mt-5 mt-lg-0 justify-content-center justify-content-lg-end">
-                            @if (SignInManager.IsSignedIn(User))
+                            @if (_signInManager.IsSignedIn(User))
                             {
                                 <a href="/Dashboard" class="d-inline-flex text-decoration-none btn btn-primary btn-outline-dark rounded-5 px-5 py-3">Dashboard</a>
                             }
@@ -148,6 +185,28 @@
         </div>
     </section>
 
+    @* Search Bar *@
+    <div class="container-fluid search-container">
+    <form asp-action="Parcel" method="post">
+        <div class="container">
+            <br/>
+            <div class="row height d-flex justify-content-center align-items-center">
+
+                <div class="col-md-12">
+
+                    <div class="search">
+                        <i class="fa fa-search"></i>
+                        <input type="text" id="TrackingID" name="TrackingID" class="form-control" placeholder="Curious about your parcel? Track Now">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+    </div>
+
     <!-- Feature Section Starts -->
     <section id="features">
         <div id="resources" class="container py-5 my-5">
@@ -191,129 +250,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Services Section Starts -->
-    <section id="services" class="my-5">
-        <div class="container ">
-            <h1 class="text-center my-5">Our Services</h1>
-            <div class="row py-5">
-                <div class="col-md-3">
-                    <div class="service-post py-5 px-5">
-                        <div class="feature-icon d-inline-flex align-items-center justify-content-center  fs-2 mb-3">
-                            <img src="assets2/images/van.png" alt="">
-                        </div>
-                        <h3>Fast Transportation</h3>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting Ipsum has been the industry's standard
-                            dummy text ever since
-                        </p>
-                        <a href="services-single.html" class="icon-link">More info </a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="service-post py-5 px-5">
-                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-                            <img src="assets2/images/ship.png" alt="">
-                        </div>
-                        <h3>Ocean Freight</h3>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting Ipsum has been the industry's standard
-                            dummy text ever since
-                        </p>
-                        <a href="services-single.html" class="icon-link">More info </a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="service-post py-5 px-5">
-                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-                            <img src="assets2/images/headset.png" alt="">
-                        </div>
-                        <h3>Customs Services</h3>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting Ipsum has been the industry's standard
-                            dummy text ever since
-                        </p>
-                        <a href="services-single.html" class="icon-link">More info </a>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="service-post py-5 px-5">
-                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3">
-                            <img src="assets2/images/rate.png" alt="">
-                        </div>
-                        <h3>Monthly Rates</h3>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting Ipsum has been the industry's standard
-                            dummy text ever since
-                        </p>
-                        <a href="services-single.html" class="icon-link">More info </a>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center">
-                <a href="services.html" class="btn btn-primary first-button my-5">Explore Services</a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Articles Section Starts -->
-    <section id="articles">
-        <div id="company" class="container pt-5 my-5">
-            <h1 class="text-center  my-5">Latest Articles</h1>
-            <div class="row g-4 py-5">
-                <div class="feature col-md-4">
-                    <div class="artical-post">
-                        <div class="feature-icon d-inline-flex align-items-center justify-content-center ">
-                            <img src="assets2/images/plane.png" alt="" class="img-fluid">
-                        </div>
-                        <div class="artical-content py-5 px-5 ">
-                            <h3>Learn and stay updated with</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting Ipsum has been the industry's standard
-                                dummy text ever since
-                            </p>
-                            <a href="blog-single.html" class="icon-link">More info </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="feature col-md-4">
-                    <div class="artical-post">
-                        <div class="feature-icon d-inline-flex align-items-center justify-content-center">
-                            <img src="assets2/images/box.png" alt="" class="img-fluid">
-                        </div>
-                        <div class="artical-content py-5 px-5 ">
-                            <h3>Asia-Pacific shipping update</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting Ipsum has been the industry's standard
-                                dummy text ever since
-                            </p>
-                            <a href="blog-single.html" class="icon-link">More info </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="feature col-md-4">
-                    <div class="artical-post">
-                        <div class="feature-icon d-inline-flex align-items-center justify-content-center">
-                            <img src="assets2/images/plane.png" alt="" class="img-fluid">
-                        </div>
-                        <div class="artical-content py-5 px-5 ">
-                            <h3>Stay up to date with logistics</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting Ipsum has been the industry's standard
-                                dummy text ever since
-                            </p>
-                            <a href="blog-single.html" class="icon-link">More info </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center">
-                <a href="blog.html" class="btn btn-primary first-button my-5">More Articles</a>
-            </div>
-
         </div>
     </section>
 
@@ -458,12 +394,12 @@
                 <div class="col-md-5 action-column1">
                     <div class="row flex-column py-5 px-5">
                         <div class=" ms-3 mb-5 mt-5 ">
-                            <h1 class="mt-2">2043</h1>
-                            <h5>Active Customers</h5>
+                            <h1 class="mt-2">@(_userManager.GetUsersInRoleAsync("user").Result.Count())</h1>
+                            <h5>Customers</h5>
                         </div>
 
                         <div class=" ms-3 mb-5 ">
-                            <h1>3298</h1>
+                            <h1>@ViewBag.shipmentCount</h1>
                             <h5>Monthly Shipments</h5>
                         </div>
 
@@ -488,70 +424,9 @@
         </div>
     </section>
 
-    <!-- Footer Section Starts -->
-    <section id="footer">
-        <div class="container footer-container py-5">
-            <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5  ">
-
-                <div class="col-md-3 ">
-                    <h4 class="py-3">Shipping Information</h4>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-3">
-                            <a href="#" class="nav-link footer-1-link p-0 "> Shipping to United States </a>
-                        </li>
-                        <li class="nav-item mb-3">
-                            <a href="#" class="nav-link footer-1-link p-0 "> Shipping to The Netherlands </a>
-                        </li>
-                        <li class="nav-item mb-3">
-                            <a href="#" class="nav-link footer-1-link p-0 "> Shipping to United Kingdom </a>
-                        </li>
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> Shipping to Spain </a></li>
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> Shipping to Germany </a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-3 ">
-                    <h4 class="py-3">Knowledge Hub</h4>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> Logistics Know How </a></li>
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> Logistics News </a></li>
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> Local Solutions </a></li>
-                        <li class="nav-item mb-3">
-                            <a href="#" class="nav-link footer-1-link p-0 "> Logistics Trends & Events </a>
-                        </li>
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> Customer Stories </a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-3 ">
-                    <h4 class="py-3">Useful Links</h4>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> Contact </a></li>
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> Services </a></li>
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> Terms and Conditions </a></li>
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> Why Us </a></li>
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> Careers </a></li>
-                    </ul>
-                </div>
-
-                <div class="col-md-3 ">
-                    <h4 class="py-3">Contact</h4>
-                    <ul class="nav flex-column">
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> Company Headquarter </a></li>
-                        <li class="nav-item mb-3">
-                            <a href="#" class="nav-link footer-1-link p-0 "> United States of America </a>
-                        </li>
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> Ney York 10 </a></li>
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> 2511 DP Den Haag </a></li>
-                        <li class="nav-item mb-3"><a href="#" class="nav-link footer-1-link p-0 "> courier@gmaile.com </a></li>
-                    </ul>
-                </div>
-            </footer>
-        </div>
-    </section>
-
-
-
+    <footer class="text-center bg-secondary py-3">
+        <p class="text-white">Kunzete "CopyRight"</p>
+    </footer>
 
     <!-- Scripts  Starts -->
     <script src="assets2/js/jquery-1.11.0.min.js"></script>

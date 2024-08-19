@@ -1,0 +1,118 @@
+﻿@model Delivery
+@{
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+@if (Model != null)
+{
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-md">
+                <div class="card-header bg-primary text-white">
+                    <i class="bi bi-box"></i> Parcel
+                </div>
+                <div class="card-body py-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <i class="bi bi-barcode"></i><b>Tracking ID:</b><br /> @Model.DeliveryNumber
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-md">
+                <div class="card-header bg-success text-white">
+                    <i class="bi bi-map"></i> Location
+                </div>
+                <div class="card-body py-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <i class="bi-geo-alt"></i> <b>From:</b> @Model.FromOffice.City (@Model.FromOffice.Address)
+                        </li>
+                        <li class="list-group-item">
+                            <i class="bi-geo-alt"></i> <b>To:</b> @Model.ToOffice.City (@Model.ToOffice.Address)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-md">
+                <div class="card-header bg-dark text-white">
+                    <i class="bi-receipt"></i> Details
+                </div>
+                <div class="card-body py-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <i class="bi-box-fill"></i> <b>Weight:</b> @(Model.Weight)g
+                        </li>
+                        <li class="list-group-item">
+                            <i class="bi-currency-rupee"></i> <b>Charges:</b> @(Model.Charge)PKR
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card h-100 shadow-md">
+                <div class="card-header bg-warning text-white">
+                    <i class="bi-info-circle"></i> Status
+                </div>
+                <div class="card-body py-3">
+                    <ul class="list-group list-group-flush">
+                        @if (Model.Status == DeliveryStatus.Posted)
+                        {
+                            <li class="list-group-item">
+                                <button class="btn btn-primary">
+                                    <i class="bi-check-circle"></i> Posted
+                                </button>
+                                <span class="text-muted small"><b> Date Of Posting: </b>(@Model.DateOfPosting)</span>
+                            </li>
+                        }
+                        else if(Model.Status == DeliveryStatus.InTransit)
+                        {
+                            <li class="list-group-item">
+                                <button class="btn btn-primary">
+                                    <i class="bi-check-circle"></i> Posted
+                                </button>
+                                <span class="text-muted small"><b> Date Of Posting: </b>(@Model.DateOfPosting)</span>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-secondary text-light">
+                                    <i class="bi-exclamation-circle"></i> InTransit
+                                </button>
+                                <span class="text-muted small"><b>Date Of Receipt:</b> (@Model.DateOfReceipt)</span>
+                            </li>
+                        }
+                        else if (Model.Status == DeliveryStatus.Delivered)
+                        {
+                            <li class="list-group-item">
+                                <button class="btn btn-primary">
+                                    <i class="bi-check-circle"></i> Posted
+                                </button>
+                                <span class="text-muted small"><b> Date Of Posting: </b>(@Model.DateOfPosting)</span>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-secondary text-light">
+                                    <i class="bi-exclamation-circle"></i> InTransit
+                                </button>
+                                <span class="text-muted small"><b>Date Of Receipt:</b> (@Model.DateOfReceipt)</span>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-success">
+                                    <i class="bi-check-circle"></i> Delivered
+                                </button>
+                                <span class="text-muted small"><b>Date Of Delivery:</b> (@Model.DateOfDelivery)</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p class="text-muted">No parcel found with the specified tracking ID.</p>
+}

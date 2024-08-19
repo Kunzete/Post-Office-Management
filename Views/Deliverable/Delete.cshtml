@@ -1,0 +1,123 @@
+﻿@model Post_Office_Management.Models.Delivery
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Dashboard/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-3 py-2">
+                <div class="card-header">
+                    <h3>Delete Delivery</h3>
+                </div>
+                <br />
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-md-4 col-form-label">
+                            Tracking ID:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.DeliveryNumber)
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Delivery Status:
+                        </dt>
+                        <dd class="col-md-8">
+                            <button class="btn btn-success">
+                                @Html.DisplayFor(model => model.Status)
+                            </button>
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Date of Posting:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.DateOfPosting)
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Date of Receipt:
+                        </dt>
+                        <dd class="col-md-8">
+                            @if (Model.DateOfReceipt.HasValue)
+                            {
+                                @Html.DisplayFor(model => model.DateOfReceipt)
+                            }
+                            else
+                            {
+                                <span>Not In Transit</span>
+                            }
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Date of Delivery:
+                        </dt>
+                        <dd class="col-md-8">
+                            @if (Model.DateOfDelivery.HasValue)
+                            {
+                                @Html.DisplayFor(model => model.DateOfDelivery)
+                            }
+                            else
+                            {
+                                <span>Not Delivered</span>
+                            }
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Receiver Name:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.ReceiverName)
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Receiver Number:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.ReceiverContactNumber)
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Parcel Weight:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.Weight)g
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Service Type:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.ServiceType.Name)
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            From Location:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.FromOffice.City)
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            To Location:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.ToOffice.City)
+                        </dd>
+                        <dt class="col-md-4 col-form-label">
+                            Charge:
+                        </dt>
+                        <dd class="col-md-8">
+                            @Html.DisplayFor(model => model.Charge) PKR
+                        </dd>
+                    </dl>
+                    <hr/>
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="row">
+                            <div class="col-md-6 d-grid">
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </div>
+                            <div class="col-md-6 d-grid">
+                                <a asp-action="List" class="btn btn-secondary">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

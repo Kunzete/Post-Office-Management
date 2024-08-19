@@ -134,7 +134,11 @@ namespace Post_Office_Management.Controllers
 
         public IActionResult Delete(int id)
         {
-            var charge = _db.Charges.Find(id);
+            var charge = _db.Charges.Where(c => c.Id == id).Include(s => s.ServiceType).SingleOrDefault();
+            if (charge == null)
+            {
+                return NotFound();
+            }
             return View(charge);
         }
 

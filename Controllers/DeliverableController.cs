@@ -48,14 +48,12 @@ namespace Post_Office_Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Generate a unique delivery number
                 delivery.DeliveryNumber = Guid.NewGuid().ToString();
-                delivery.Status = "Posted";
+                delivery.Status = DeliveryStatus.Posted;
 
                 // Calculate the charge
                 delivery.Charge = CalculateCharge(delivery);
 
-                // Set the ServiceType, FromOffice, and ToOffice navigation properties
                 delivery.ServiceType = _db.Services.Find(delivery.ServiceTypeId);
                 delivery.FromOffice = _db.Locations.Find(delivery.FromOfficeId);
                 delivery.ToOffice = _db.Locations.Find(delivery.ToOfficeId);
@@ -76,6 +74,97 @@ namespace Post_Office_Management.Controllers
                 ViewBag.ToOffices = new SelectList(_db.Locations, "Id", "City", delivery.ToOfficeId);
                 return View(delivery);
             }
+        }
+
+
+
+        public IActionResult Edit(int id)
+        {
+            var deliverable = _db.Deliverables.Find(id);
+
+            if(deliverable == null)
+            {
+                return NotFound("Delivery not found");
+            }
+
+            return View(deliverable);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Delivery model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var delivery = await _db.Deliverables
+                        .AsNoTracking()
+                        .Include(d => d.FromOffice)
+                        .Include(d => d.ToOffice)
+                        .Include(d => d.ServiceType)
+                        .Where(d => d.Id == model.Id)
+                        .FirstOrDefaultAsync();
+
+                    if (delivery != null)
+                    {
+                        var existingDelivery = _db.Deliverables.Find(model.Id);
+
+                        if (model.Status == DeliveryStatus.Posted)
+                        { 
+                            existingDelivery!.DateOfPosting = DateTime.Now;
+                        }
+                        else if (model.Status == DeliveryStatus.InTransit)
+                        {
+                            existingDelivery!.DateOfReceipt = DateTime.Now;
+                        }
+                        else if (model.Status == DeliveryStatus.Delivered)
+                        {
+                            existingDelivery!.DateOfDelivery = DateTime.Now;
+                        }
+
+                        // Update the existing delivery entity
+                        if (existingDelivery != null)
+                        {
+                            existingDelivery.Status = model.Status;
+
+                            await _db.SaveChangesAsync();
+                            return RedirectToAction("List");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Error updating delivery");
+                    return View(model);
+                }
+            }
+            return View(model);
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var deliverable =
+                _db.Deliverables
+                .Include(f => f.FromOffice)
+                .Include(f => f.ToOffice)
+                .Include(f => f.ServiceType)
+                .Where(f => f.Id == id)
+                .FirstOrDefault();
+
+            if (deliverable == null)
+            {
+                return NotFound();
+            }
+
+            return View(deliverable);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Delivery parcel)
+        {
+            _db.Deliverables.Remove(parcel);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("List");
         }
 
         private decimal CalculateCharge(Delivery delivery)
